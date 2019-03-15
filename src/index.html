@@ -13,35 +13,43 @@
         <div class="container">
             <h1>Tip Calculator</h1>
             <label for="billAmount">Bill Amount: </label>
-            <div class="input-group mb-3"
-                 id="billAmount">
+            <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">$</span>
                 </div>
-                <input type="text"
+                <input type="number"
                        class="form-control"
-                       placeholder="e.g. 100.00">
+                       id="bill-amount"
+                       min="0.01"
+                       step="0.01"
+                       pattern="/^\d+(?:\.\d{0,2})$/"
+                       placeholder="e.g. 100.00"
+                       required>
             </div>
             <label for="tipPercentage">Tip Percentage: </label>
             <div class="btn-group"
                  role="group"
-                 id="tipPercentage"
+                 id="tip-percentage"
                  aria-label="Tip Percentage">
                 <button type="button"
-                        class="btn btn-success">10%</button>
+                        class="btn btn-success tip-button"></button>
                 <button type="button"
-                        class="btn btn-success active">15%</button>
+                        class="btn btn-success tip-button"></button>
                 <button type="button"
-                        class="btn btn-success">20%</button>
+                        class="btn btn-success tip-button"></button>
             </div>
-            <h6 class="tip-verification">You are tipping 15%. Maybe the service was meh, but you cleaned your plate
-                nonetheless.
-            </h6>
-            <ul class="list-group tip-summary">
-                <li class="list-group-item bill-amount">Bill Amount: $100.00</li>
-                <li class="list-group-item tip-percentage">Tip Percentage: 15%</li>
-                <li class="list-group-item tip-amount">Amount of Tip: $15.00</li>
-                <li class="list-group-item"><i class="total-payment-amount">Total to be Paid: $115.00</i></li>
+            <h6 id="tip-verification"></h6>
+            <ul class="list-group"
+                id="tip-summary">
+                <li class="list-group-item bill-amount">Bill Amount: $<span id="summary-bill-amt"></span>
+                </li>
+                <li class="list-group-item tip-percentage">Tip Percentage: <span id="summary-tip-pct"></span>%</li>
+                <li class="list-group-item tip-amount">Amount of Tip: $<span id="summary-tip-amt"></span>
+                </li>
+                <li class="list-group-item">
+                    <i class="total-payment-amount">Total to be Paid: $<span id="summary-total-amt"></span>
+                    </i>
+                </li>
             </ul>
         </div>
     </form>
